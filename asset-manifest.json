@@ -1,13 +1,13 @@
 {
-  "main.css": "/static/css/main.939d8d98.chunk.css",
-  "main.js": "/static/js/main.cc6d6654.chunk.js",
-  "main.js.map": "/static/js/main.cc6d6654.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.fdfcfda2.js",
-  "runtime~main.js.map": "/static/js/runtime~main.fdfcfda2.js.map",
-  "static/js/2.5ec21d73.chunk.js": "/static/js/2.5ec21d73.chunk.js",
-  "static/js/2.5ec21d73.chunk.js.map": "/static/js/2.5ec21d73.chunk.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.626c3e72ba07162b39140188812b52f7.js": "/precache-manifest.626c3e72ba07162b39140188812b52f7.js",
-  "service-worker.js": "/service-worker.js",
-  "static/css/main.939d8d98.chunk.css.map": "/static/css/main.939d8d98.chunk.css.map"
+  "main.css": "/kalama/static/css/main.939d8d98.chunk.css",
+  "main.js": "/kalama/static/js/main.4b76a5a3.chunk.js",
+  "main.js.map": "/kalama/static/js/main.4b76a5a3.chunk.js.map",
+  "runtime~main.js": "/kalama/static/js/runtime~main.b20b7779.js",
+  "runtime~main.js.map": "/kalama/static/js/runtime~main.b20b7779.js.map",
+  "static/js/2.5ec21d73.chunk.js": "/kalama/static/js/2.5ec21d73.chunk.js",
+  "static/js/2.5ec21d73.chunk.js.map": "/kalama/static/js/2.5ec21d73.chunk.js.map",
+  "index.html": "/kalama/index.html",
+  "precache-manifest.754eb4e35f4402a65d3d56f410ca291c.js": "/kalama/precache-manifest.754eb4e35f4402a65d3d56f410ca291c.js",
+  "service-worker.js": "/kalama/service-worker.js",
+  "static/css/main.939d8d98.chunk.css.map": "/kalama/static/css/main.939d8d98.chunk.css.map"
 }
