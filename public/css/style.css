@@ -22,12 +22,12 @@ body {
       font-size: 16px; } }
 
 a {
-  color: #2c98f0;
+  color: maroon;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
   a:hover, a:active, a:focus {
-    color: #2c98f0;
+    color: maroon;
     outline: none;
     text-decoration: none !important; }
 
@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #000;
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 400;
-  margin: 0 0 30px 0; }
+  margin: 0 0 40px 0; }
 
 figure {
   margin-bottom: 2.5em;
@@ -57,15 +57,15 @@ figure {
 
 ::-webkit-selection {
   color: #fff;
-  background: #2c98f0; }
+  background: maroon; }
 
 ::-moz-selection {
   color: #fff;
-  background: #2c98f0; }
+  background: maroon; }
 
 ::selection {
   color: #fff;
-  background: #2c98f0; }
+  background: maroon; }
 
 #colorlib-page {
   width: 100%;
@@ -74,43 +74,35 @@ figure {
 
 #colorlib-aside {
   padding-top: 1em;
-  padding-bottom: 40px;
-  float: left;
-  width: 300px;
-  position: fixed;
+  padding-left: 1em; 
   overflow: scroll;
   z-index: 1001;
-  background: #f2f3f7;
+  background: white;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
-  @media screen and (max-width: 768px) {
-    #colorlib-aside {
-      width: 300px;
-      -moz-transform: translateX(-300px);
-      -webkit-transform: translateX(-300px);
-      -ms-transform: translateX(-300px);
-      -o-transform: translateX(-300px);
-      transform: translateX(-300px);
-      padding-top: 4em; } }
+
   #colorlib-aside .author-img {
     width: 150px;
+    float: left;
     height: 150px;
-    margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     border-radius: 50%; }
   #colorlib-aside .email {
     display: block;
+    padding-top: 60px;
+    padding-right: 20px;
+    float: right;
     font-size: 12px;}
   #colorlib-aside .number {
     display: block;
     margin-bottom: 2em;
     font-size: 12px;}  
   #colorlib-aside #colorlib-logo {
-    text-align: right;
+    text-align: left;
     font-weight: 700;
     font-size: 30px;
     margin-bottom: .5em;
@@ -118,7 +110,7 @@ figure {
     width: 100%; }
     #colorlib-aside #colorlib-logo a {
       display: block;
-      text-align: center;
+      float: left;
       color: #000;
       padding-right: .3em; }
   #colorlib-aside #colorlib-main-menu {
@@ -134,7 +126,6 @@ figure {
         #colorlib-aside #colorlib-main-menu ul {
           margin: 0 0 2em 0; } }
       #colorlib-aside #colorlib-main-menu ul li {
-        margin: 0 0 10px 0;
         padding: 0;
         list-style: none;
         font-size: 12px;
@@ -145,7 +136,8 @@ figure {
           color: rgba(0, 0, 0, 0.7);
           text-decoration: none;
           position: relative;
-          padding: 10px 0;
+          float: right;
+          padding: 60px 20px 10px;
           font-family: "Quicksand", Arial, sans-serif;
           -webkit-transition: 0.3s;
           -o-transition: 0.3s;
@@ -157,7 +149,7 @@ figure {
             bottom: 7px;
             left: 0;
             right: 0;
-            background-color: #2c98f0;
+            background-color: maroon;
             visibility: hidden;
             -webkit-transform: scaleX(0);
             -moz-transform: scaleX(0);
@@ -180,7 +172,7 @@ figure {
               -o-transform: scaleX(1);
               transform: scaleX(1); }
         #colorlib-aside #colorlib-main-menu ul li.active a {
-          color: #2c98f0; }
+          color: maroon; }
           #colorlib-aside #colorlib-main-menu ul li.active a:after {
             visibility: visible;
             -webkit-transform: scaleX(1);
@@ -215,15 +207,14 @@ figure {
           #colorlib-aside .colorlib-footer ul li a:hover, #colorlib-aside .colorlib-footer ul li a:active, #colorlib-aside .colorlib-footer ul li a:focus {
             text-decoration: none;
             outline: none;
-            color: #2c98f0; }
+            color: maroon; }
 
 .container-wrap {
   max-width: 1170px;
   margin: 0 auto; }
 
 #colorlib-main {
-  width: calc(100% - 300px);
-  float: right;
+  width: 100%;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
@@ -252,18 +243,18 @@ figure {
         background-position: bottom center;
         min-height: 400px;
         position: relative; }
-    #colorlib-hero .flexslider .flex-control-nav {
+    /* #colorlib-hero .flexslider .flex-control-nav {
       bottom: 20px;
       z-index: 1000;
       left: 20px;
       float: left;
-      width: auto; }
-      @media screen and (max-width: 768px) {
+      width: auto; } */
+      /* @media screen and (max-width: 768px) {
         #colorlib-hero .flexslider .flex-control-nav {
           right: 20px;
-          top: 100px; } }
+          top: 100px; } } */
       #colorlib-hero .flexslider .flex-control-nav li {
-        display: block;
+        display: none;
         margin-bottom: 10px; }
         #colorlib-hero .flexslider .flex-control-nav li a {
           background: rgba(0, 0, 0, 0.5);
@@ -275,7 +266,7 @@ figure {
           #colorlib-hero .flexslider .flex-control-nav li a.flex-active {
             cursor: pointer;
             background: transparent;
-            border: 2px solid #2c98f0; }
+            border: 2px solid maroon; }
     #colorlib-hero .flexslider .flex-direction-nav {
       display: none; }
     #colorlib-hero .flexslider .slider-text {
@@ -284,7 +275,7 @@ figure {
       min-height: 500px;
       z-index: 9; }
       #colorlib-hero .flexslider .slider-text > .slider-text-inner {
-        display: table-cell;
+        display: inline-block;
         vertical-align: middle;
         min-height: 700px;
         padding: 2.5em;
@@ -356,13 +347,13 @@ body.offcanvas {
     background: #f2f3f7;
     z-index: 999;
     position: fixed; }
-  body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
+  /* body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
     top: 0;
     -moz-transform: translateX(300px);
     -webkit-transform: translateX(300px);
     -ms-transform: translateX(300px);
     -o-transform: translateX(300px);
-    transform: translateX(300px); }
+    transform: translateX(300px); } */
 
 .colorlib-narrow-content {
   padding: 0 2.5em; }
@@ -463,7 +454,7 @@ body.offcanvas {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-family: "Quicksand", Arial, sans-serif;
-  background-color: #2c98f0;
+  background-color: maroon;
   color: #fff;
   position: relative;
   -webkit-box-shadow: none !important;
@@ -547,7 +538,7 @@ body.offcanvas {
   display: block;
   width: 40px;
   height: 40px;
-  background: #2c98f0;
+  background: maroon;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -623,13 +614,13 @@ body.offcanvas {
   -ms-box-shadow: 0px 0px 56px -8px rgba(0, 0, 0, 0.17);
   -o-box-shadow: 0px 0px 56px -8px rgba(0, 0, 0, 0.17);
   box-shadow: 0px 0px 56px -8px rgba(0, 0, 0, 0.17);
-  border-bottom: 2px solid #2c98f0; }
+  border-bottom: 2px solid maroon; }
   .services .icon2 {
     display: block;
     margin-bottom: 20px; }
     .services .icon2 i {
       font-size: 30px;
-      color: #2c98f0; }
+      color: maroon; }
   .services h3 {
     font-family: "Quicksand", Arial, sans-serif;
     font-size: 16px;
@@ -667,7 +658,7 @@ body.offcanvas {
     height: 50px;
     display: table;
     margin: 0 auto;
-    background: #2c98f0; }
+    background: maroon; }
     .services .icon:before, .services .icon:after {
       position: absolute;
       left: 0;
@@ -679,14 +670,14 @@ body.offcanvas {
       height: 0;
       border-style: solid;
       border-width: 0 50px 30px 50px;
-      border-color: transparent transparent #2c98f0 transparent; }
+      border-color: transparent transparent maroon transparent; }
     .services .icon:after {
       bottom: -30px;
       width: 0;
       height: 0;
       border-style: solid;
       border-width: 30px 50px 0 50px;
-      border-color: #2c98f0 transparent transparent transparent; }
+      border-color: maroon transparent transparent transparent; }
     .services .icon i {
       font-size: 30px;
       color: #fff;
@@ -743,7 +734,7 @@ body.offcanvas {
   overflow: visible; }
 
 .progress-bar {
-  background: #2c98f0;
+  background: maroon;
   -webkit-box-shadow: none;
   box-shadow: none;
   font-size: 12px;
@@ -764,7 +755,7 @@ body.offcanvas {
     width: 10px;
     height: 10px;
     content: '';
-    background: #2c98f0;
+    background: maroon;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -774,11 +765,11 @@ body.offcanvas {
     top: -22px;
     right: 0; }
   .progress-bar.color-1 {
-    background: #2c98f0; }
+    background: maroon; }
     .progress-bar.color-1:after {
-      background: #2c98f0; }
+      background: maroon; }
     .progress-bar.color-1 span {
-      color: #2c98f0; }
+      color: maroon; }
   .progress-bar.color-2 {
     background: #ec5453; }
     .progress-bar.color-2:after {
@@ -832,7 +823,7 @@ body.offcanvas {
     .colorlib-feature .colorlib-icon i {
       display: table-cell;
       vertical-align: middle;
-      color: #2c98f0;
+      color: maroon;
       font-size: 60px;
       height: 100px; }
       @media screen and (max-width: 1200px) {
@@ -854,7 +845,7 @@ body.offcanvas {
   .colorlib-feature.colorlib-feature-sm .colorlib-text {
     margin-top: 30px; }
   .colorlib-feature.colorlib-feature-sm .colorlib-icon i {
-    color: #2c98f0;
+    color: maroon;
     font-size: 40px; }
     @media screen and (max-width: 1200px) {
       .colorlib-feature.colorlib-feature-sm .colorlib-icon i {
@@ -926,7 +917,7 @@ body.offcanvas {
   .work-menu span a {
     color: #000; }
     .work-menu span a.active {
-      color: #2c98f0; }
+      color: maroon; }
 
 .project {
   background-size: cover;
@@ -943,7 +934,7 @@ body.offcanvas {
     bottom: 0;
     left: 0;
     right: 0;
-    background: #2c98f0;
+    background: maroon;
     opacity: 0;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
@@ -1057,7 +1048,7 @@ body.offcanvas {
       width: 100px;
       height: 100px;
       font-size: 50px;
-      color: #2c98f0;
+      color: maroon;
       background: #fff;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
@@ -1109,11 +1100,11 @@ body.offcanvas {
         .colorlib-social li a {
           padding: 10px 8px; } }
       .colorlib-social li a:hover {
-        color: #2c98f0; }
+        color: maroon; }
       .colorlib-social li a:hover, .colorlib-social li a:active, .colorlib-social li a:focus {
         outline: none;
         text-decoration: none;
-        color: #2c98f0; }
+        color: maroon; }
 
 #map {
   width: 100%;
@@ -1145,19 +1136,19 @@ body.offcanvas {
         -ms-border-radius: 2px;
         border-radius: 2px; }
       .pagination li a:hover, .pagination li a:focus {
-        background: #2c98f0;
+        background: maroon;
         color: #fff;
-        border: 1px solid #2c98f0; }
+        border: 1px solid maroon; }
       @media screen and (max-width: 768px) {
         .pagination li a {
           padding: 7px 15px; } }
     .pagination li.active a {
-      background: #2c98f0;
-      border: 1px solid #2c98f0 !important; }
+      background: maroon;
+      border: 1px solid maroon !important; }
       .pagination li.active a:hover, .pagination li.active a:focus {
-        background: #2c98f0;
+        background: maroon;
         color: #fff;
-        border: 1px solid #2c98f0 !important; }
+        border: 1px solid maroon !important; }
 
 .btn {
   margin-right: 4px;
@@ -1187,18 +1178,18 @@ body.offcanvas {
     outline: none !important; }
 
 .btn-primary {
-  background: #2c98f0;
+  background: maroon;
   color: #fff;
-  border: 2px solid #2c98f0; }
+  border: 2px solid maroon; }
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background: #44a4f2 !important;
     border-color: #44a4f2 !important; }
   .btn-primary.btn-outline {
     background: transparent;
-    color: #2c98f0;
-    border: 2px solid #2c98f0; }
+    color: maroon;
+    border: 2px solid maroon; }
     .btn-primary.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
-      background: #2c98f0;
+      background: maroon;
       color: #fff; }
 
 .btn-success {

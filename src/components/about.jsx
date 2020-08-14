@@ -14,8 +14,6 @@ export default class About extends Component {
                     <span className="heading-meta">About Us</span>
                     <h2 className="colorlib-heading">Who Are We?</h2>
                     <p>We host events on our beautiful property in Kalama, WA</p>
-                    <p>Lorem ipsum dolor sit amet, an nisl movet vocent nec. At iusto accumsan iracundia vel, mei omnis reque nemore no. Legere altera ut mel, meis graeco nam ex. Ferri melius salutatus te sea, sonet eruditi usu ad. Soleat inimicus scribentur ei vix, duis dicat scripserit no nam. Mea eu alii falli, cum legere postea id. </p>
-                    <p>Commune phaedrum legendos vim ad, duo ex autem expetendis, per error suscipit ut. Augue vivendum gloriatur ei ius, sed ludus tation regione ut, cum ne nisl causae fabulas. Ad sit cibo diceret inimicus. Usu ei malis erroribus imperdiet, nec te accusamus molestiae, mentitum maiestatis ex eos. Quot fuisset sed te, eum ex omnium percipit. Esse ridens dicunt ut has, et mollis legendos cotidieque has. </p>
                     </div>
                 </div>
                 </div>
@@ -59,8 +57,8 @@ export default class About extends Component {
                     <i className="icon-file-openoffice" />
                 </span>
                 <div className="desc">
-                    <h3>Corporate Events</h3>
-                    <p>Corporate Parties, Employee Outings, Conferences</p>
+                    <h3>Cottage Rental</h3>
+                    <p>We have a cottage available for reservations.</p>
                 </div>
                 </div>
             </div>
