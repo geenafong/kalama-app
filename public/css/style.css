@@ -17,12 +17,13 @@ body {
   font-size: 15px;
   line-height: 1.8;
   color: rgba(0, 0, 0, 0.7); }
-  @media screen and (max-width: 992px) {
+  @media screen and (min-width: 768px) and (max-width: 991px)  {
     body {
       font-size: 16px; } }
 
 a {
   color: maroon;
+  font-size: 15px;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
@@ -73,8 +74,10 @@ figure {
   position: relative; }
 
 #colorlib-aside {
+  margin: 0 auto;
   padding-top: 1em;
-  padding-left: 1em; 
+  padding-left: 5em; 
+  font-size: 15px;
   overflow: scroll;
   z-index: 1001;
   background: white;
@@ -83,9 +86,10 @@ figure {
   transition: 0.5s; }
 
   #colorlib-aside .author-img {
-    width: 75px;
+    width: 150px;
     float: left;
-    height: 75px;
+    padding-left: 20px;
+    height: 150px;
     margin-bottom: 10px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -93,10 +97,11 @@ figure {
     border-radius: 50%; }
   #colorlib-aside .email {
     display: block;
+    font-size: 15px;
     padding-top: 60px;
     padding-right: 20px;
     float: right;
-    font-size: 12px;}
+    }
   #colorlib-aside .number {
     display: block;
     margin-bottom: 2em;
@@ -115,6 +120,7 @@ figure {
       padding-right: .3em; }
   #colorlib-aside #colorlib-main-menu {
     display: block;
+    min-width: 968px;
     width: 100%; }
     #colorlib-aside #colorlib-main-menu .collapse {
       display: block !important; }
@@ -210,7 +216,7 @@ figure {
             color: maroon; }
 
 .container-wrap {
-  max-width: 1170px;
+  max-width: 940px;
   margin: 0 auto; }
 
 #colorlib-main {
@@ -233,7 +239,9 @@ figure {
   #colorlib-hero .flexslider {
     border: none;
     z-index: 1;
-    margin-bottom: 0; }
+    padding-top: 0px;
+    padding-left: 50px; 
+    padding-right: 50px;}
     #colorlib-hero .flexslider .slides {
       position: relative;
       overflow: visible; }
@@ -1293,6 +1301,7 @@ body.offcanvas {
   height: 130px; }
 
 .colorlib-nav-toggle {
+  display: none;
   cursor: pointer;
   text-decoration: none; }
   .colorlib-nav-toggle.active i::before, .colorlib-nav-toggle.active i::after {
