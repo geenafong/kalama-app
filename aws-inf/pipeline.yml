@@ -1,0 +1,139 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: >
+  Manages CI/CD pipeline for a deploying unstable datalake stacks off the stable branch 
+Parameters:
+  ProjectName:
+    Type: String
+    Default: kalama-app
+  GitHubRepo:
+    Type: String
+    Default: kalama-app
+  GitHubBranch:
+    Type: String
+    Default: master
+  GitHubToken:
+    Type: String
+    NoEcho: true
+  GitHubOwner:
+    Type: String
+    Default: geenafong
+
+Resources:
+
+  KalamaAppCodeBuild:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      ServiceRole: "codebuild-service-role"
+      EncryptionKey: !Sub "arn:aws:kms:${AWS::Region}:${AWS::AccountId}:alias/kalama-app-pipeline"
+      Description: Builds the api for platform customer manager
+      Artifacts:
+        Type: CODEPIPELINE
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: aws-inf/buildspec.yml
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:2.0
+        Type: LINUX_CONTAINER
+        EnvironmentVariables:
+          - Name: S3_BUCKET
+            Value: !Sub kalama-app-artifacts-${AWS::AccountId}-${AWS::Region}
+          - Name: S3_PREFIX
+            Value: !Sub ${ProjectName}
+
+  PipelineWebhook:
+    Type: AWS::CodePipeline::Webhook
+    Properties:
+      Authentication: GITHUB_HMAC
+      AuthenticationConfiguration:
+        SecretToken: !Ref GitHubToken
+      Filters:
+        - 
+          JsonPath: "$.ref"
+          MatchEquals: !Sub "refs/heads/${GitHubBranch}"
+      TargetPipeline: !Ref Pipeline
+      TargetAction: App
+      Name: !Ref AWS::StackName
+      TargetPipelineVersion: !GetAtt Pipeline.Version
+      RegisterWithThirdParty: true
+
+
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      Name: !Sub ${GitHubRepo}-${GitHubBranch}
+      RoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/kalama-app-codepipeline
+      ArtifactStores:
+        - Region: us-east-1
+          ArtifactStore:
+            Type: S3
+            Location: !Sub artifacts-${AWS::AccountId}-us-east-1
+            EncryptionKey: 
+              Id: !Sub "arn:aws:kms:us-east-1:${AWS::AccountId}:alias/kalama-app-pipeline"
+              Type: KMS
+        - Region: us-west-2
+          ArtifactStore:
+            Type: S3
+            Location: !Sub artifacts-${AWS::AccountId}-us-west-2
+            EncryptionKey: 
+              Id: !Sub "arn:aws:kms:us-west-2:${AWS::AccountId}:alias/kalama-app-pipeline"
+              Type: KMS
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: App
+              ActionTypeId:
+                Category: Source
+                Owner: ThirdParty
+                Version: "1"
+                Provider: GitHub
+              Configuration:
+                Owner: !Ref GitHubOwner
+                Repo: !Ref GitHubRepo
+                Branch: !Ref GitHubBranch
+                OAuthToken: !Ref GitHubToken
+                PollForSourceChanges: false
+              OutputArtifacts:
+                - Name: App
+              RunOrder: 1
+        - Name: Build
+          Actions:
+            - 
+              Name: Build
+              Region: us-west-2
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Version: "1"
+                Provider: CodeBuild
+              Configuration:
+                ProjectName: !Ref KalamaAppCodeBuild
+              InputArtifacts:
+                - Name: App
+              OutputArtifacts:
+                - Name: BuildOutput
+              RunOrder: 1
+            - 
+              Name: CfnDeploy
+              Region: us-west-2
+              RoleArn: arn:aws:iam::455920928861:role/kalama-app-codepipelineassume
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Version: "1"
+                Provider: CloudFormation
+              Configuration:
+                ActionMode: CREATE_UPDATE
+                RoleArn: arn:aws:iam::455920928861:role/kalama-app-deploymentservice
+                StackName: kalama-app
+                TemplatePath: "BuildOutput::aws-inf/template.yml"
+                TemplateConfiguration: "FinalizeCfnConfig::template-configuration.json"
+                OutputFileName: kalama-app
+              InputArtifacts:
+                - Name: BuildOutput
+                - Name: FinalizeCfnConfig_AutoValid
+              OutputArtifacts:
+                - Name: CfnDeploy_AutoValid
+              RunOrder: 2

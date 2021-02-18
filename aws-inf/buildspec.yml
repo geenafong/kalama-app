@@ -1,0 +1,28 @@
+version: 0.2
+env:
+  parameter-store:
+    GITHUB_ACCESS_TOKEN: /codebuild/github/access-token
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - node -v
+      - npm -v
+      #- pip install --upgrade cfn-lint
+      - cd aws-inf
+      - echo "machine github.com login $GITHUB_ACCESS_TOKEN" >> ~/.netrc
+      - chmod 600 ~/.netrc
+      - npm ci
+  pre_build:
+    commands:
+      #- cfn-lint --template aws-inf/template.yml --include-checks I
+  build:
+    commands:
+      - npm run build
+
+artifacts:
+  type: zip
+  files:
+    - "build/**/*"
+    - "aws-inf/**/*"
