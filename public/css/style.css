@@ -17,16 +17,18 @@ body {
   font-size: 15px;
   line-height: 1.8;
   color: rgba(0, 0, 0, 0.7); }
-  @media screen and (min-width: 768px) and (max-width: 991px)  {
+  @media screen and (min-width: 750px)  {
     body {
-      font-size: 16px; } }
-
+      font-size: 11px; } }
 a {
   color: maroon;
   font-size: 15px;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
+  /* @media screen and (max-width: 760px)  {
+    a {
+      font-size: 10px; } */
   a:hover, a:active, a:focus {
     color: maroon;
     outline: none;
@@ -95,7 +97,12 @@ figure {
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     border-radius: 50%; }
-  #colorlib-aside .email {
+    /* @media screen and (max-width: 760px){
+      .author-img {
+        width: 117px;
+        height: 130px;
+    } */
+  /* #colorlib-aside .email {
     display: block;
     font-size: 15px;
     padding-top: 60px;
@@ -117,10 +124,10 @@ figure {
       display: block;
       float: left;
       color: #000;
-      padding-right: .3em; }
+      padding-right: .3em; } */
   #colorlib-aside #colorlib-main-menu {
     display: block;
-    min-width: 968px;
+    max-width: 968px;
     width: 100%; }
     #colorlib-aside #colorlib-main-menu .collapse {
       display: block !important; }
@@ -128,9 +135,6 @@ figure {
       text-align: center;
       margin: 0;
       padding: 0; }
-      @media screen and (max-width: 768px) {
-        #colorlib-aside #colorlib-main-menu ul {
-          margin: 0 0 2em 0; } }
       #colorlib-aside #colorlib-main-menu ul li {
         padding: 0;
         list-style: none;
@@ -196,7 +200,8 @@ figure {
     @media screen and (max-width: 768px) {
       #colorlib-aside .colorlib-footer {
         position: relative;
-        bottom: 0; } }
+        bottom: 0;
+       } }
     #colorlib-aside .colorlib-footer span {
       display: block; }
     #colorlib-aside .colorlib-footer ul {
@@ -229,6 +234,7 @@ figure {
       width: 100%;
       padding: 0 1em; } }
 
+
 #colorlib-hero {
   min-height: 500px;
   background: #fff url(../images/loader.gif) no-repeat center center;
@@ -251,32 +257,12 @@ figure {
         background-position: bottom center;
         min-height: 400px;
         position: relative; }
-    /* #colorlib-hero .flexslider .flex-control-nav {
-      bottom: 20px;
-      z-index: 1000;
-      left: 20px;
-      float: left;
-      width: auto; } */
-      /* @media screen and (max-width: 768px) {
-        #colorlib-hero .flexslider .flex-control-nav {
-          right: 20px;
-          top: 100px; } } */
-      #colorlib-hero .flexslider .flex-control-nav li {
-        display: none;
-        margin-bottom: 10px; }
-        #colorlib-hero .flexslider .flex-control-nav li a {
-          background: rgba(0, 0, 0, 0.5);
-          -webkit-box-shadow: none;
-          box-shadow: none;
-          width: 12px;
-          height: 12px;
-          cursor: pointer; }
-          #colorlib-hero .flexslider .flex-control-nav li a.flex-active {
-            cursor: pointer;
-            background: transparent;
-            border: 2px solid maroon; }
-    #colorlib-hero .flexslider .flex-direction-nav {
-      display: none; }
+    #colorlib-hero .flexslider .flex-direction-nav a{
+      display: block;
+      height: 60px; }
+    #colorlib-hero .flexslider .flex-control-nav{
+      display: block;
+      position: relative; }
     #colorlib-hero .flexslider .slider-text {
       display: table;
       opacity: 0;
@@ -402,7 +388,13 @@ body.offcanvas {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  position: relative; }
+  position: relative; 
+  }
+  @media screen and (max-width: 768px){
+    .author-img {
+      height: 5px;
+      width: 5px;
+  }
 
 .colorlib-heading {
   font-size: 18px;

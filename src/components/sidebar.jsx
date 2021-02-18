@@ -9,7 +9,7 @@ export default class Sidebar extends Component {
           <aside id="colorlib-aside" className="border js-fullheight">
             <div className="text-center">
               <div className="author-img" style={{backgroundImage: 'url(images/kalama-logo.jpg)'}} />
-              <span className="email"><i className="icon-mail"></i> kalama.retreat@gmail.com</span>
+              {/* <span className="email"><i className="icon-mail"></i> kalama.retreat@gmail.com</span> */}
             </div>
             <nav id="colorlib-main-menu" role="navigation" className="navbar">
               <div id="navbar" className="collapse">
