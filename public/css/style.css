@@ -86,7 +86,9 @@ figure {
   transition: 0.5s; }
   /* @media screen and (max-width: 768px) {	
     #colorlib-aside {	
-      width: 300px;	
+      width: 500px;
+      float: right;
+      font-size: 12px;
       -moz-transform: translateX(-300px);	
       -webkit-transform: translateX(-300px);	
       -ms-transform: translateX(-300px);	
@@ -113,7 +115,7 @@ figure {
   #colorlib-aside .number {
     display: block;
     margin-bottom: 2em;
-    font-size: 12px;}  
+    font-size: 12px;}
   #colorlib-aside #colorlib-logo {
     text-align: left;
     font-weight: 700;
@@ -128,8 +130,9 @@ figure {
       padding-right: .3em; }
   #colorlib-aside #colorlib-main-menu {
     display: block;
-    min-width: 880px;
+    /* max-width: 880px; */
     width: 100%; }
+    
     #colorlib-aside #colorlib-main-menu .collapse {
       display: block !important; }
     #colorlib-aside #colorlib-main-menu ul {
@@ -153,8 +156,16 @@ figure {
           -webkit-transition: 0.3s;
           -o-transition: 0.3s;
           transition: 0.3s; }
+          @media screen and (max-width: 768px) {
+            
+            #colorlib-aside #colorlib-main-menu ul li a{
+              display: none;
+
+            }
+          }
           #colorlib-aside #colorlib-main-menu ul li a:after {
             content: "";
+            float: left;
             position: absolute;
             height: 1px;
             bottom: 7px;
@@ -220,9 +231,9 @@ figure {
             outline: none;
             color: maroon; }
 
-.container-wrap {
+/* .container-wrap {
   max-width: 940px;
-  margin: 0 auto; }
+  margin: 0 auto; } */
 
 #colorlib-main {
   width: 100%;
@@ -329,7 +340,7 @@ figure {
                     width: 100%; } }
                     
 
-/* body.offcanvas {
+body.offcanvas {
   overflow-x: hidden; }
   body.offcanvas #colorlib-aside {
     -moz-transform: translateX(0);
@@ -337,7 +348,7 @@ figure {
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
     transform: translateX(0);
-    width: 300px;
+    width: 274px;
     background: #f2f3f7;
     z-index: 999;
     position: relative; }
@@ -347,7 +358,7 @@ figure {
     -webkit-transform: translateX(300px);
     -ms-transform: translateX(300px);
     -o-transform: translateX(300px);
-    transform: translateX(300px); } */
+    transform: translateX(300px); }
 
 .colorlib-narrow-content {
   padding: 0 2.5em; }
@@ -1287,7 +1298,7 @@ figure {
   height: 130px; }
 
 .colorlib-nav-toggle {
-  display: none;
+  display: block;
   cursor: pointer;
   text-decoration: none; }
   .colorlib-nav-toggle.active i::before, .colorlib-nav-toggle.active i::after {
