@@ -130,7 +130,7 @@ figure {
       padding-right: .3em; }
   #colorlib-aside #colorlib-main-menu {
     display: block;
-    /* max-width: 880px; */
+    min-width: 730px;
     width: 100%; }
     
     #colorlib-aside #colorlib-main-menu .collapse {
@@ -157,9 +157,8 @@ figure {
           -o-transition: 0.3s;
           transition: 0.3s; }
           @media screen and (max-width: 768px) {
-            
             #colorlib-aside #colorlib-main-menu ul li a{
-              display: none;
+              /* display: none; */
 
             }
           }
@@ -370,11 +369,6 @@ body.offcanvas {
   margin: 0;
   padding: 0; }
 
-.colorlib-experience,
-.colorlib-skills,
-.colorlib-education,
-.colorlib-blog,
-.colorlib-work,
 .colorlib-about,
 .colorlib-services,
 .colorlib-contact {
@@ -384,11 +378,6 @@ body.offcanvas {
   width: 100%;
   display: block; }
   @media screen and (max-width: 768px) {
-    .colorlib-experience,
-    .colorlib-skills,
-    .colorlib-education,
-    .colorlib-blog,
-    .colorlib-work,
     .colorlib-about,
     .colorlib-services,
     .colorlib-contact {
@@ -1298,7 +1287,7 @@ body.offcanvas {
   height: 130px; }
 
 .colorlib-nav-toggle {
-  display: block;
+  display: none;
   cursor: pointer;
   text-decoration: none; }
   .colorlib-nav-toggle.active i::before, .colorlib-nav-toggle.active i::after {
