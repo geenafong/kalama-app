@@ -54,7 +54,8 @@ Resources:
         Aliases:
           - !Sub ${DnsHostedZone}
         ViewerCertificate:
-          AcmCertificateArn: !If [CreateInstanceCert, !Ref WebSslCertificate, !Ref InstanceCertificateArn]
+          # AcmCertificateArn: !If [CreateInstanceCert, !Ref WebSslCertificate, !Ref InstanceCertificateArn]
+          AcmCertificateArn: arn:aws:acm:us-east-1:116655042275:certificate/073d5a21-d459-4de2-a592-901ee98a866c
           MinimumProtocolVersion: TLSv1.2_2019
           SslSupportMethod: sni-only
         Origins:
