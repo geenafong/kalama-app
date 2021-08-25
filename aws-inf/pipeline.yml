@@ -123,6 +123,7 @@ Resources:
                 StackName: kalama-app
                 TemplatePath: "BuildOutput::aws-inf/template.yml"
                 OutputFileName: kalama-app
+                ParameterOverrides: "{\"DnsHostedZone\": \"kalamariverretreat.net\"}"
               InputArtifacts:
                 - Name: BuildOutput
               OutputArtifacts:

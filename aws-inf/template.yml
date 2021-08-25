@@ -4,8 +4,6 @@ AWSTemplateFormatVersion: 2010-09-09
 Parameters:
   DnsHostedZone:
     Type: String
-  Subdomain:
-    Type: String
   InstanceCertificateArn:
     Type: String
     Default: None
@@ -45,7 +43,7 @@ Resources:
     DeletionPolicy: Retain
     UpdateReplacePolicy: Retain
     Properties:
-      DomainName: !Sub ${Subdomain}.${DnsHostedZone}
+      DomainName: !Sub ${DnsHostedZone}
       ValidationMethod: DNS
 
   Cdn:
@@ -57,7 +55,7 @@ Resources:
         HttpVersion: http2
         DefaultRootObject: index.html
         Aliases:
-          - !Sub ${Subdomain}.${DnsHostedZone}
+          - !Sub ${DnsHostedZone}
         ViewerCertificate:
           AcmCertificateArn: !If [CreateInstanceCert, !Ref WebSslCertificate, !Ref InstanceCertificateArn]
           MinimumProtocolVersion: TLSv1.2_2019
@@ -93,8 +91,8 @@ Resources:
       Type: A
       AliasTarget:
         DNSName: !GetAtt Cdn.DomainName # instanceid.cloudfront.net
-        HostedZoneId: Z2FDTNDATOUJW2 # magic hosted zone id for cloudfront.net
-      Name: !Sub ${Subdomain}.${DnsHostedZone}
+        HostedZoneId: Z102393914EAHYMIFM9IQ # magic hosted zone id for cloudfront.net
+      Name: !Sub ${DnsHostedZone}
       HostedZoneName: !Sub "${DnsHostedZone}."
   ClientWebDnsAAAARecord:
     Type: AWS::Route53::RecordSet
@@ -102,8 +100,8 @@ Resources:
       Type: AAAA
       AliasTarget:
         DNSName: !GetAtt Cdn.DomainName # instanceid.cloudfront.net
-        HostedZoneId: Z2FDTNDATOUJW2 # magic hosted zone id for cloudfront.net
-      Name: !Sub ${Subdomain}.${DnsHostedZone}
+        HostedZoneId: Z102393914EAHYMIFM9IQ # magic hosted zone id for cloudfront.net
+      Name: !Sub ${DnsHostedZone}
       HostedZoneName: !Sub "${DnsHostedZone}."
 
 Outputs:
