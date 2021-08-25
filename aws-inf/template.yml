@@ -5,8 +5,8 @@ Parameters:
   DnsHostedZone:
     Type: String
 
-Conditions:
-  CreateInstanceCert: !Equals [ !Ref InstanceCertificateArn, "None"]
+# Conditions:
+#   CreateInstanceCert: !Equals [ !Ref InstanceCertificateArn, "None"]
 
 Resources:
   SiteBucket:
