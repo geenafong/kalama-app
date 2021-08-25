@@ -4,10 +4,6 @@ AWSTemplateFormatVersion: 2010-09-09
 Parameters:
   DnsHostedZone:
     Type: String
-  InstanceCertificateArn:
-    Type: String
-    Default: None
-    Description: This is the existing certificate for this developer's stack. If 'None' is provided the certificate will be created
 
 Conditions:
   CreateInstanceCert: !Equals [ !Ref InstanceCertificateArn, "None"]
@@ -37,14 +33,15 @@ Resources:
             Action: s3:GetObject
             Resource: !Sub ${SiteBucket.Arn}/*
 
-  WebSslCertificate:
-    Type: AWS::CertificateManager::Certificate
-    Condition: CreateInstanceCert
-    DeletionPolicy: Retain
-    UpdateReplacePolicy: Retain
-    Properties:
-      DomainName: !Sub ${DnsHostedZone}
-      ValidationMethod: DNS
+# Manually created in US East 1
+  # WebSslCertificate:
+  #   Type: AWS::CertificateManager::Certificate
+  #   Condition: CreateInstanceCert
+  #   DeletionPolicy: Retain
+  #   UpdateReplacePolicy: Retain
+  #   Properties:
+  #     DomainName: !Sub ${DnsHostedZone}
+  #     ValidationMethod: DNS
 
   Cdn:
     Type: AWS::CloudFront::Distribution
