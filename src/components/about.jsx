@@ -13,7 +13,7 @@ export default class About extends Component {
                     <div className="about-desc">
                     <span className="heading-meta">About Us</span>
                     <h2 className="colorlib-heading">Who Are We?</h2>
-                    <p>We host events on our beautiful property in Kalama, WA</p>
+                    <p>Kalama River Retreat offers five-acres of private event space sitting along side the beautiful Kalama River located in Washington. </p>
                     </div>
                 </div>
                 </div>
@@ -36,29 +36,29 @@ export default class About extends Component {
                 </span>
                 <div className="desc">
                     <h3>Weddings</h3>
-                    <p>Share your special moment in a beautiful setting</p>
+                    <p>Share your special moment in a beautiful setting along the Kalama River</p>
                 </div>
                 </div>
             </div>
             <div className="col-md-4 text-center animate-box">
                 <div className="services color-3">
                 <span className="icon">
-                    <i className="icon-home-outline" />
+                    <i className="icon-file-openoffice" />
                 </span>
                 <div className="desc">
                     <h3>Private Parties</h3>
-                    <p>Family Reunions, Special Events, Private Events</p>
+                    <p>We offer a place to host family reunions, company events, etc.</p>
                 </div>
                 </div>
             </div>
             <div className="col-md-4 text-center animate-box">
                 <div className="services color-5">
                 <span className="icon">
-                    <i className="icon-file-openoffice" />
+                    <i className="icon-home-outline" />
                 </span>
                 <div className="desc">
                     <h3>Cottage Rental</h3>
-                    <p>We have a cottage available for reservations.</p>
+                    <p>We have a cottage available for you to rent out for your event.</p>
                 </div>
                 </div>
             </div>
