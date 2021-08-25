@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
 
 export default class TopNav extends Component {
   render() { 
@@ -14,19 +13,12 @@ export default class TopNav extends Component {
             <nav id="colorlib-main-menu" role="navigation" className="navbar">
               <div id="navbar" className="collapse">
                 <ul>
-                  <li><Link to='/contact-us'>Contact Us</Link></li>
+                  <li><a href="#contact-us" data-nav-section="contact-us">Contact Us</a></li>
                   <li><a href="#services" data-nav-section="services">Services</a></li>
                   <li><a href="#about" data-nav-section="about">About Us</a></li>
                 </ul>
               </div>
             </nav>
-            {/* <nav id="colorlib-main-menu"> 
-              <ul>
-                <li><a href="https://www.facebook.com/kalama-retreat" target="_blank" rel="noopener noreferrer"><i className="icon-facebook2" /></a></li>
-                <li><a href="https://twitter.com/kalama-retreat" target="_blank" rel="noopener noreferrer"><i className="icon-twitter2" /></a></li>
-                <li><a href="https://www.instagram.com/kalama-retreat/" target="_blank" rel="noopener noreferrer"><i className="icon-instagram" /></a></li>
-              </ul>
-            </nav> */}
           </aside>
         </div>
       </div>

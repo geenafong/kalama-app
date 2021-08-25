@@ -1,0 +1,119 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  DnsHostedZone:
+    Type: String
+  Subdomain:
+    Type: String
+  InstanceCertificateArn:
+    Type: String
+    Default: None
+    Description: This is the existing certificate for this developer's stack. If 'None' is provided the certificate will be created
+
+Conditions:
+  CreateInstanceCert: !Equals [ !Ref InstanceCertificateArn, "None"]
+
+Resources:
+  SiteBucket:
+    Type: AWS::S3::Bucket
+
+  ClientWebOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Sub access-identity-${SiteBucket}
+
+  ClientWebBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SiteBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Id: PolicyForClientWebPrivateS3Content
+        Statement:
+          - Sid: Grant CloudFront origin access identity read access to content in S3 static web assets bucket
+            Effect: Allow
+            Principal:
+              CanonicalUser: !GetAtt ClientWebOriginAccessIdentity.S3CanonicalUserId
+            Action: s3:GetObject
+            Resource: !Sub ${SiteBucket.Arn}/*
+
+  WebSslCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Condition: CreateInstanceCert
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      DomainName: !Sub ${Subdomain}.${DnsHostedZone}
+      ValidationMethod: DNS
+
+  Cdn:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Comment: !Sub "${AWS::StackName}"
+        Enabled: true
+        HttpVersion: http2
+        DefaultRootObject: index.html
+        Aliases:
+          - !Sub ${Subdomain}.${DnsHostedZone}
+        ViewerCertificate:
+          AcmCertificateArn: !If [CreateInstanceCert, !Ref WebSslCertificate, !Ref InstanceCertificateArn]
+          MinimumProtocolVersion: TLSv1.2_2019
+          SslSupportMethod: sni-only
+        Origins:
+          - Id: !Ref SiteBucket
+            DomainName: !GetAtt SiteBucket.DomainName
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${ClientWebOriginAccessIdentity}
+        DefaultCacheBehavior:
+          Compress: true
+          TargetOriginId: !Ref SiteBucket
+          AllowedMethods:
+            - GET
+            - HEAD
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        CustomErrorResponses:
+          - ErrorCode: 404
+            ResponsePagePath: /index.html
+            ResponseCode: 200 
+          - ErrorCode: 403
+            ResponsePagePath: /index.html
+            ResponseCode: 200 
+
+
+  WebDnsARecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Type: A
+      AliasTarget:
+        DNSName: !GetAtt Cdn.DomainName # instanceid.cloudfront.net
+        HostedZoneId: Z2FDTNDATOUJW2 # magic hosted zone id for cloudfront.net
+      Name: !Sub ${Subdomain}.${DnsHostedZone}
+      HostedZoneName: !Sub "${DnsHostedZone}."
+  ClientWebDnsAAAARecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Type: AAAA
+      AliasTarget:
+        DNSName: !GetAtt Cdn.DomainName # instanceid.cloudfront.net
+        HostedZoneId: Z2FDTNDATOUJW2 # magic hosted zone id for cloudfront.net
+      Name: !Sub ${Subdomain}.${DnsHostedZone}
+      HostedZoneName: !Sub "${DnsHostedZone}."
+
+Outputs:
+  BucketName:
+    Value: !Ref SiteBucket
+  BucketDomainName:
+    Value: !GetAtt SiteBucket.DomainName
+  BucketWebsiteURL:
+    Value: !GetAtt SiteBucket.WebsiteURL
+  CloudFrontCdnDistId:
+    Value: !Ref Cdn
+  CdnUrl:
+    Value: !Sub "https://${ClientWebDnsAAAARecord}"

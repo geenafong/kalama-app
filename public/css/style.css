@@ -285,6 +285,7 @@ figure {
               position: relative; }
               @media screen and (max-width: 768px) {
                 #colorlib-hero .flexslider .slider-text > .slider-text-inner {
+                  min-height: 300px;
                   text-align: center; } }
               #colorlib-hero .flexslider .slider-text > .slider-text-inner h1, #colorlib-hero .flexslider .slider-text > .slider-text-inner h2 {
                 margin: 0;
@@ -312,7 +313,8 @@ figure {
                 font-size: 50px; }
                 @media screen and (max-width: 768px) {
                   #colorlib-hero .flexslider .slider-text > .slider-text-inner .heading-section {
-                    font-size: 30px; } }
+                    font-size: 30px;
+                   } }
               #colorlib-hero .flexslider .slider-text > .slider-text-inner s
       .colorlib-lead {
                 font-size: 20px;
