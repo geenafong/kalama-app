@@ -21,6 +21,7 @@ phases:
     commands:
       - npm run build
 
+
 artifacts:
   type: zip
   files:

@@ -122,10 +122,30 @@ Resources:
                 RoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/kalama-app-cloudformation
                 StackName: kalama-app
                 TemplatePath: "BuildOutput::aws-inf/template.yml"
-                OutputFileName: kalama-app
+                OutputFileName: output.json
                 ParameterOverrides: "{\"DnsHostedZone\": \"kalamariverretreat.net\"}"
               InputArtifacts:
                 - Name: BuildOutput
               OutputArtifacts:
-                - Name: CfnDeploy_AutoValid
+                - Name: CfnDeploy
               RunOrder: 2
+            -
+              Name: S3_Deploy
+              RunOrder: 4
+              ActionTypeId:
+                Category: Invoke
+                Owner: AWS
+                Version: "1"
+                Provider: Lambda
+              InputArtifacts:
+                - Name: CfnDeploy
+                - Name: BuildOutput
+              Configuration:
+                FunctionName: S3Deploy
+                UserParameters: !Sub |
+                  {
+                    "S3BucketName": "kalama-app-sitebucket-1s1m5wyvvkt28",
+                    "ExcludeArtifactsFromUpload": ["CfnDeploy"],
+                    "AccountId": "${AWS::AccountId}",
+                    "Region": "us-west-2"
+                  }
