@@ -50,7 +50,7 @@ Resources:
         Comment: !Sub "${AWS::StackName}"
         Enabled: true
         HttpVersion: http2
-        DefaultRootObject: /build/index.html
+        DefaultRootObject: /index.html
         Aliases:
           - !Sub ${DnsHostedZone}
         ViewerCertificate:
@@ -76,10 +76,10 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
         CustomErrorResponses:
           - ErrorCode: 404
-            ResponsePagePath: /build/index.html
+            ResponsePagePath: /index.html
             ResponseCode: 200 
           - ErrorCode: 403
-            ResponsePagePath: /build/index.html
+            ResponsePagePath: /index.html
             ResponseCode: 200 
 
 
