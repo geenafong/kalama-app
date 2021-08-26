@@ -89,7 +89,7 @@ Resources:
       Type: A
       AliasTarget:
         DNSName: !GetAtt Cdn.DomainName # instanceid.cloudfront.net
-        HostedZoneId: Z102393914EAHYMIFM9IQ # magic hosted zone id for cloudfront.net
+        HostedZoneId: Z2FDTNDATAQYW2 # magic hosted zone id for cloudfront.net
       Name: !Sub ${DnsHostedZone}
       HostedZoneName: !Sub "${DnsHostedZone}."
   ClientWebDnsAAAARecord:
@@ -98,7 +98,7 @@ Resources:
       Type: AAAA
       AliasTarget:
         DNSName: !GetAtt Cdn.DomainName # instanceid.cloudfront.net
-        HostedZoneId: Z102393914EAHYMIFM9IQ # magic hosted zone id for cloudfront.net
+        HostedZoneId: Z2FDTNDATAQYW2 # magic hosted zone id for cloudfront.net
       Name: !Sub ${DnsHostedZone}
       HostedZoneName: !Sub "${DnsHostedZone}."
 
