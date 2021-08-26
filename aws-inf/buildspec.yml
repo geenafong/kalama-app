@@ -26,4 +26,3 @@ artifacts:
   type: zip
   files:
     - "**/*"
-    - "aws-inf/**/*"
